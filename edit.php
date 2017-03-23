@@ -10,8 +10,19 @@
         exit();	
 	}
 	
+	if(isset($_POST["delete"])){
+		
+	  deleteSingles($_POST["number"]);
+	  header("Location:data.php");
+	  exit();	
+		
+	}
+	
 	$c = getSingles($_GET["number"]);
 ?>
+<a href="data.php"> tagasi data lehele </a>
+
+
 
 <h2>Muutmine</h2>
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
@@ -23,4 +34,6 @@
   	<label for="perenimi" >Perekonnanimi</label><br>
 	<input id="perenimi" name="perenimi" type="text" value="<?=$c->perenimi;?>"><br><br>
 	<input type="submit" name="update" value="Salvesta">
+	<input type="submit" name="delete" value="Kustuta Kontakt">
+	
 </form>

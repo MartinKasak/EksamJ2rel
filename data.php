@@ -36,6 +36,7 @@
 	
 ?>
 <html>
+
 <h2>Tere tulemast</h2> 
 <?=$_SESSION["userEmail"];?>
 <br><br>

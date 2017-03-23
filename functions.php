@@ -151,6 +151,18 @@
 	}	
 		
 		
+	function deleteSingles($number){
+		$database = "if16_martkasa_eksam";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		$stmt = $mysqli->prepare("DELETE FROM contacts  WHERE number=?");
+		$stmt->bind_param("s", $number);
+		if($stmt->execute()){
+			echo "6nnestus!";
+		}
+		$stmt->close();
+		$mysqli->close();
+	}
+	
 		
 		
 ?>
