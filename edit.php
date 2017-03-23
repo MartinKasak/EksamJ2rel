@@ -20,10 +20,9 @@
 	
 	$c = getSingles($_GET["number"]);
 ?>
+<html>
 <a href="data.php"> tagasi data lehele </a>
-
-
-
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 <h2>Muutmine</h2>
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
 	<label for="number" >Number</label><br>
@@ -37,3 +36,5 @@
 	<input type="submit" name="delete" value="Kustuta Kontakt">
 	
 </form>
+
+</html>

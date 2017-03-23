@@ -36,7 +36,7 @@
 		if($_POST["againPassword"] == $_POST["signupPassword"]){
 			$againPasswordError= "";
 		} else {
-			$againPasswordError= "Parool ei olnud sama";
+			$againPasswordError= "Parool ei ole";
 		}
 	}
 	//kui k6ik eelnev korras
@@ -58,7 +58,7 @@
 	
 	if(isset($_POST["loginEmail"])){
 		if(empty($_POST["loginEmail"])){			
-			$signinEmailError= "E-mail on puudu!";
+			$signinEmailError= "E-mail puudub!";
 		}else{
 			$signinEmail = $_POST["loginEmail"];
 		}
@@ -72,7 +72,8 @@
 
 
 ?>
-
+<html>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 <h1>Logi sisse</h1>
 <form method="POST">
 	<?php if($error!=""){ echo $error;}?><br>
@@ -104,8 +105,7 @@
 	
 </form>
 
-
-
+</html>
 
 
 

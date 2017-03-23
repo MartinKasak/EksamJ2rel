@@ -1,6 +1,15 @@
 
 //andmebaasi tabelid
 
+u-if16;
+p-ifiad16;
+andmebaas- if16_martkasa_eksam;
+
+//** Ülesande lühikirjeldus**//
+//**telefoninumbrite märkmik, kus saab veebi kaudu talletada inimiste esnimesi, perekonna nimesi ja telefoninumbrerid.**//
+//**Andmeid on võimalik muuta ja kustutada lisaks on võimalus otsida eesnime, perekonnanime, ja telefoninumbri kaudu inimesi.**//
+//**Jõusdin täita ülesandes esimesed kaks punkti, rippmenüüdeni ei jõudnud**//
+
 CREATE TABLE `user_sample` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -12,4 +21,31 @@ ALTER TABLE `user_sample`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
+ALTER TABLE `user_sample`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+  
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `eesnimi` varchar(255) NOT NULL,
+  `perenimi` varchar(255) NOT NULL,
+  `number` int(11) NOT NULL,
+  `kasutaja` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `number` (`number`);
+
+
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+
+
+
+
+
+  
+  

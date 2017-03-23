@@ -36,7 +36,7 @@
 	
 ?>
 <html>
-
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 <h2>Tere tulemast</h2> 
 <?=$_SESSION["userEmail"];?>
 <br><br>
@@ -56,7 +56,7 @@
 </html>
 
 <html>
-
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 <h3>Inimese ja numbri otsimine </h3>
 <form>
 		<input type="search" name="q" value="<?=$q;?>">

@@ -1,0 +1,17 @@
+body {
+    background-color: linen;
+	    margin-left: 40%;
+}
+h2, h3, h1 {
+    color: navy;
+}
+table {
+	
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+h3 {
+    color: navy;
+}
