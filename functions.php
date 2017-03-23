@@ -63,7 +63,57 @@
 		
 	}	
 		
+	function getallcontacts($user, $q, $sort, $direction) {
 		
+		$allowedSortOptions=["eesnimi","perenimi","number"];
+		if(!in_array($sort, $allowedSortOptions)){
+			$sort = "eesnimi";
+		}
+		$orderBy="ASC";
+		if($direction == "descending"){
+			$orderBy="DESC";
+		}
+		
+		$database = "if16_martkasa_eksam";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		
+		if($q==""){
+			
+			$stmt=$mysqli->prepare("
+			SELECT eesnimi, perenimi, number
+			FROM contacts
+			WHERE kasutaja = ?
+			ORDER BY $sort $orderBy
+		");
+		
+		$stmt->bind_param("s", $user);
+		
+		} else {
+			
+			$searchword="%".$q."%";
+			$stmt=$mysqli->prepare("
+			SELECT eesnimi, perenimi, number
+			FROM contacts
+			WHERE kasutaja = ? AND (eesnimi LIKE ? OR perenimi LIKE ? OR number LIKE ?)
+			ORDER BY $sort $orderBy
+		");
+		
+		$stmt->bind_param("ssss", $user, $searchword, $searchword, $searchword);
+		}
+		$stmt->bind_result($firstname, $lastname, $number);
+		$stmt->execute();
+		$result=array();
+		while($stmt->fetch()) {
+			$contact= new stdclass();
+			$contact->firstname=$firstname;
+			$contact->lastname=$lastname;
+			$contact->number=$number;
+			array_push($result, $contact);
+		}
+		$stmt->close();
+		$mysqli->close();
+		return $result;
+	}	
 
 
 ?>
