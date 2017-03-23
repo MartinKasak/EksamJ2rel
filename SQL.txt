@@ -2,7 +2,7 @@
 //andmebaasi tabelid
 
 u-if16;
-p-ifiad16;
+p-ifikad16;
 andmebaas- if16_martkasa_eksam;
 
 //** Ülesande lühikirjeldus**//
