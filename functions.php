@@ -115,5 +115,26 @@
 		return $result;
 	}	
 
+	function getSingles($number){
+		$database = "if16_martkasa_eksam";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		$stmt = $mysqli->prepare("SELECT eesnimi, perenimi FROM contacts WHERE number=?");
+		$stmt->bind_param("s", $number);
+		$stmt->bind_result($eesnimi, $perenimi);
+		$stmt->execute();
+		$contact = new Stdclass();
 
+		if($stmt->fetch()){
+			$contact->number = $number;
+			$contact->eesnimi = $eesnimi;
+			$contact->perenimi = $perenimi;
+		}else{
+			header("Location: functions.php");
+			exit();
+		}
+		$stmt->close();
+		$mysqli->close();
+		return $contact;	
+	}
+			
 ?>

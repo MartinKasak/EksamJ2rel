@@ -84,7 +84,7 @@
 			$html .= "<td>".$c->firstname."</td>";
 			$html .= "<td>".$c->lastname."</td>";
 			$html .= "<td>".$c->number."</td>";
-
+			$html .= "<td><a href='edit.php?number=".$c->number."'>Edit</a></td>";
 		$html .= "</tr>";
 	}
 	$html .= "</table>";
