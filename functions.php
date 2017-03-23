@@ -1,10 +1,11 @@
 <?php
 
-session_start();
+	require("../../config.php");
+	session_start();
 	
 	
 	function signUp ($email, $password){
-		$databse = "if16_martkasa_eksam";
+		$database = "if16_martkasa_eksam";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUES(?, ?)");
 		echo $mysqli->error;
