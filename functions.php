@@ -136,5 +136,21 @@
 		$mysqli->close();
 		return $contact;	
 	}
-			
+		
+	function updateSingles($eesnimi, $perenimi, $number, $newnumber){
+        $database = "if16_martkasa_eksam";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		$stmt = $mysqli->prepare("UPDATE contacts SET eesnimi=?, perenimi=?, number=? WHERE number=?");
+		$stmt->bind_param("ssss",$eesnimi, $perenimi, $newnumber ,$number);
+		// salvestamine
+		if($stmt->execute()){
+			echo "õnnestus!";
+		}
+		$stmt->close();
+		$mysqli->close();
+	}	
+		
+		
+		
+		
 ?>
