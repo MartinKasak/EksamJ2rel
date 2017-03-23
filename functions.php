@@ -47,16 +47,23 @@
 	}
 		
 		
+	function savecontact ($firstname, $lastname, $number, $user) {
+	$database = "if16_martkasa_eksam";		
+	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		$stmt = $mysqli->prepare("INSERT INTO contacts(eesnimi, perenimi, number, kasutaja) VALUES(?, ?, ?, ?)");
+		echo $mysqli->error;		
+		$stmt->bind_param("ssss", $firstname, $lastname, $number, $user);		
+		if($stmt->execute()) {			
+			echo "salvestamine 6nnestus";			
+		} else {			
+			echo "Mingi viga tuli".$stmt->error;
+		}		
+		$stmt->close();
+		$mysqli->close();
+		
+	}	
 		
 		
-		
-		
-
-
-
-
-
-
 
 
 ?>
